@@ -1,0 +1,24 @@
+---
+import SiteMeta from "../components/SiteMeta.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const {
+  title = "Kyvernetes' Blog",
+  description = "Kyvernetes' Tech Blog: A new grad's foray into the game and full-stack development",
+  image = "/baldeagle.svg",
+} = Astro.props;
+---
+
+<html lang="en">
+  <SiteMeta title={title} description={description} image={image} />
+  <body class="dark:bg-zinc-900 min-h-screen">
+    <Header />
+    <article
+      class="mx-auto p-6 md:px-14 max-w-screen-xl justify-center prose dark:text-stone-50 selection:bg-teal-500"
+    >
+      <slot />
+    </article>
+    <Footer />
+  </body>
+</html>

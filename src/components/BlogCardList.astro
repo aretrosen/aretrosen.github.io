@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BlogCard from "./BlogCard.astro";
+
+type Props = {
+  blogs: CollectionEntry<"blogs">[];
+};
+
+const { blogs } = Astro.props;
+---
+
+<ul class="grid gap-8 pl-0">
+  {
+    blogs.map((blog) => (
+      <li class="flex flex-col gap-2">
+        <BlogCard blog={blog} />
+      </li>
+    ))
+  }
+</ul>

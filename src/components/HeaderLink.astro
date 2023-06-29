@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  className?: string;
+}
+
+const { href, className, ...props } = Astro.props;
+
+const { pathname } = Astro.url;
+const isActive = href === "/" + pathname.split("/")[1];
+---
+
+<li class="pr-4">
+  <a
+    href={href}
+    class:list={[
+      "flex hover:underline hover:decoration-wavy underline-offset-[5px] hover:decoration-amber-500 hover:text-orange-500 dark:hover:text-yellow-400",
+      className,
+      { "font-bold underline decoration-wavy decoration-2": isActive },
+    ]}
+    {...props}
+  >
+    <slot />
+  </a>
+</li>

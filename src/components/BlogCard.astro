@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+type Props = {
+  blog: CollectionEntry<"blogs">;
+};
+
+const { blog } = Astro.props;
+const { data, slug } = blog;
+const { topics = [] } = data;
+---
+
+<a href={`/blog/${slug}`}>
+  <div class="grid md:grid-cols-2 gap-4">
+    {
+      data.heroImage ? (
+        <Image src={data.heroImage} alt="Representative Image" />
+      ) : (
+        <span />
+      )
+    }
+    <div>
+      <h2 class="text-3xl font-semibold">{data.title}</h2>
+      <h3 class="text-lg">{data.description}</h3>
+      <div>
+        {
+          topics.length ? (
+            topics.map((topic) => <a href="#">#{topic} </a>)
+          ) : (
+            <span />
+          )
+        }
+      </div>
+    </div>
+  </div>
+</a>
