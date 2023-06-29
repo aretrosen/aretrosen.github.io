@@ -7,6 +7,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://aretrosen.github.io",
   integrations: [tailwind(), mdx(), compress(), robotsTxt(), sitemap()],
   experimental: { assets: true },
 });
